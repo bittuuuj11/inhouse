@@ -80,13 +80,11 @@ const Header = () => {
                       ? 'bg-primary text-primary-foreground'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
+                  title={item?.tooltip}
                 >
                   <Icon name={item?.icon} size={16} />
                   <span>{item?.label}</span>
                 </a>
-                <div className="hidden group-hover:block absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-1300 bg-card border border-border rounded shadow-card px-3 py-2 text-xs text-foreground whitespace-nowrap pointer-events-none">
-                  {item?.tooltip}
-                </div>
               </div>
             ))}
           </nav>
