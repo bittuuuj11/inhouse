@@ -1,5 +1,3 @@
-import validator from 'validator';
-
 export const validateEventDescription = (description, eventType) => {
   const errors = [];
   
@@ -79,14 +77,16 @@ export const validateEmail = (email) => {
     return { isValid: false, error: 'Email is required' };
   }
 
-  if (!validator.isEmail(email)) {
+  // Basic email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
     return { isValid: false, error: 'Please enter a valid email address' };
   }
 
   // Additional checks for common typos
   const commonDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'university.com'];
   const domain = email.split('@')[1];
-  
+
   if (domain && !commonDomains.includes(domain) && domain.length < 4) {
     return { isValid: false, error: 'Please check the email domain' };
   }
